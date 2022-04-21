@@ -1,6 +1,5 @@
-answer = []
-
 def solution(array, commands):
+    answer = []
     for num in range(len(commands)):
         commands_num = commands[num]  
         i = commands_num[0]
