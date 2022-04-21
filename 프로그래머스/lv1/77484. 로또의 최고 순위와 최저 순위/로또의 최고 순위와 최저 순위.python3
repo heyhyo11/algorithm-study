@@ -1,0 +1,18 @@
+def solution(lottos, win_nums):
+    win_nums_cnt = 0
+    lottos_cnt = lottos.count(0)
+
+    for i in range(len(win_nums)):
+        if win_nums[i] in lottos:
+            win_nums_cnt += 1
+
+    lottos_result = 7 - (lottos_cnt + win_nums_cnt)
+    win_nums_result = 7 - win_nums_cnt
+    
+    if win_nums_cnt == 0:
+        win_nums_result = 6
+    if lottos_cnt == 0 and win_nums_cnt == 0:
+        lottos_result = 6
+        
+    
+    return [lottos_result, win_nums_result]
