@@ -1,0 +1,14 @@
+def solution(num):
+    if num % 2 == 0:
+        answer = "Even"
+    else:
+        answer = "Odd"
+    return answer
+
+
+# 다른 사람의 풀이
+# def evenOrOdd(num):
+#     if (num%2):
+#         return "Odd"
+#     else:
+#         return "Even"
