@@ -4,3 +4,8 @@ def solution(numbers):
         sum = sum + numbers[i]
     answer = 45 - sum
     return answer
+
+
+# 다른 사람의 풀이
+# def solution(numbers):
+#     return 45 - sum(numbers)
