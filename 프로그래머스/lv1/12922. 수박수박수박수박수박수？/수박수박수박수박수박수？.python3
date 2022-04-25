@@ -1,0 +1,8 @@
+def solution(n):
+    str_list='수박'*n
+    return str_list[:n]
+
+
+# 다른 사람의 풀이
+# def water_melon(n):
+#     return "수박"*(n//2) + "수"*(n%2)
