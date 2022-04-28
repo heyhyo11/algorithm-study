@@ -1,0 +1,42 @@
+from itertools import chain, repeat
+
+def solution(answers):
+    num_list = []
+    cnt1 = 0
+    cnt2 = 0
+    cnt3 = 0
+    
+    student1 = [1, 2, 3, 4, 5] 
+    student2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    student3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+
+    repeat1 = int(len(answers) // len(student1)) + 1
+    repeat2 = int(len(answers) // len(student2)) + 1
+    repeat3 = int(len(answers) // len(student3)) + 1
+    
+    student1 = list(chain.from_iterable(repeat(student1, repeat1))) 
+    student2 = list(chain.from_iterable(repeat(student2, repeat2)))
+    student3 = list(chain.from_iterable(repeat(student3, repeat3)))
+    
+    for i in range(len(answers)):
+        if student1[i] == answers[i]:
+            cnt1 += 1
+    num_list.append(cnt1)
+    
+    for i in range(len(answers)):
+        if student2[i] == answers[i]:
+            cnt2 += 1
+    num_list.append(cnt2)
+    
+    for i in range(len(answers)):
+        if student3[i] == answers[i]:
+            cnt3 += 1
+    num_list.append(cnt3)
+    
+ 
+    max_num = max(num_list)
+    
+    answer = [i+1 for i, value in enumerate(num_list) if value == max_num]
+    
+    
+    return answer
