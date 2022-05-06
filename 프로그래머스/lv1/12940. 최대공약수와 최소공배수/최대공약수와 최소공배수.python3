@@ -1,0 +1,10 @@
+def solution(n, m):
+    factor = max(n, m) # 최대공약수
+    while factor > 0:
+        if (n % factor == 0) and (m % factor == 0):
+            # 최대공약수 * 최소공배수 = 두 수의 곱
+            multiple = n * m / factor # 최소공배수
+            answer = [factor, multiple] # 출력
+            break
+        factor -= 1 # 사이클이 돌 때마다 1씩 줄여서 계속 계산함.
+    return answer
