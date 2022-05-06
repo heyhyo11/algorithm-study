@@ -1,0 +1,11 @@
+def solution(s):
+    answer = list(s)
+    answer.sort()
+    answer.reverse()
+    return ''.join(answer)
+
+
+
+# 다른 사람의 풀이
+def solution(s):
+    return ''.join(sorted(s, reverse=True))
