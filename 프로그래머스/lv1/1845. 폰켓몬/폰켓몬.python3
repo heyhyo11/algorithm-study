@@ -1,0 +1,4 @@
+def solution(nums):
+    half_nums = len(nums) // 2
+    set_nums = len(set(nums))
+    return min(half_nums, set_nums)
