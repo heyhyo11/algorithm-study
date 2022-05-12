@@ -1,0 +1,4 @@
+def solution(n):
+    n = sorted(str(n), reverse=True)
+    answer = ''.join(n)
+    return int(answer)
