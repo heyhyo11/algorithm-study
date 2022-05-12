@@ -1,0 +1,6 @@
+def solution(phone_number):
+    back_number = phone_number[-4:]
+    front_number = phone_number[0:-4]
+    front_number = '*' * len(front_number)
+    full_number = front_number + back_number
+    return full_number
