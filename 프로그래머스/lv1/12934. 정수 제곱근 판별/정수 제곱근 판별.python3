@@ -1,0 +1,7 @@
+import math
+
+def solution(n):
+    num = math.sqrt(n)
+    if float.is_integer(num):
+        return((num+1) ** 2)
+    return -1
