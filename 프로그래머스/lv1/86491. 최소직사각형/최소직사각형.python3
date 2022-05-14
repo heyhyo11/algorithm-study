@@ -11,3 +11,10 @@ def solution(sizes):
     
     #2. 각각의 리스트에서 최댓값을 구해서 넓이 반환함.
     return max(max_list) * max(min_list)
+
+
+
+## 다른 사람의 풀이
+# 큰 값에서 최댓값, 작은 값에서 최댓값 구하기
+def solution(sizes):
+    return max(max(x) for x in sizes) * max(min(x) for x in sizes)
