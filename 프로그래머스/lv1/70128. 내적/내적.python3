@@ -1,0 +1,3 @@
+def solution(a, b):
+    #1. 같은 인덱스끼리 곱하고 더하기
+    return sum([a[i]*b[i] for i in range(len(a))])
