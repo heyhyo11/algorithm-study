@@ -1,0 +1,8 @@
+def solution(price, money, count):
+    #1. 놀이기구의 이용금액 구하기
+    ride_fee = price * sum(range(1, count+1))
+    
+    #2. 예산보다 크면 부족한 금액을, 여유라면 0을 리턴함.
+    if money - ride_fee < 0:
+        return(ride_fee-money)
+    return 0
