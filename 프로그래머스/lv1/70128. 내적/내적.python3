@@ -1,3 +1,9 @@
 def solution(a, b):
     #1. 같은 인덱스끼리 곱하고 더하기
     return sum([a[i]*b[i] for i in range(len(a))])
+
+
+## 다른 사람의 풀이
+# zip 함수 이용함
+# def solution(a, b):
+#     return sum([x*y for x, y in zip(a,b)])
