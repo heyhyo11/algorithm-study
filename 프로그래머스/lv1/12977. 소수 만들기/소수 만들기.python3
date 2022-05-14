@@ -1,0 +1,27 @@
+from itertools import combinations
+
+def solution(nums):
+    # 1. 오름차순으로 만들기
+    nums.sort()
+
+    # 2. 나올 수 있는 최대값 구하기
+    max_num = nums[-1] + nums[-2] + nums[-3]
+
+    # 3. 소수 리스트 만들기
+    nums_list = set(range(2, max_num+1))
+    for i in range(2, max_num+1):
+        if i in nums_list:
+            nums_list -= set(range(2*i, max_num+1, i))
+
+    # 4. 조합 구하기
+    combination_list = list(combinations(nums, 3))
+
+    # 5. 합 구하고 소수 리스트에 있는지 확인하기
+    result = 0
+
+    for i in combination_list:
+        if sum(i) in nums_list:
+            result += 1
+
+    # 6. 결과 출력
+    return result
