@@ -6,3 +6,8 @@ def solution(price, money, count):
     if money - ride_fee < 0:
         return(ride_fee-money)
     return 0
+
+
+## 다른 사람의 풀이
+# def solution(price, money, count):
+#    return max(0,price*(count+1)*count//2-money)
