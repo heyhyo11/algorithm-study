@@ -1,0 +1,16 @@
+from itertools import combinations
+
+def solution(numbers):
+    #1. combination list 만들기
+    combination_list = list(combinations(numbers, 2))
+    
+    #2. 합 구하고 리스트에 추가하기
+    sum_list = []
+    for i in combination_list:
+        sum_list.append(sum(i))
+    
+    #3. set 이용해서 중복 없애기
+    answer = list(set(sum_list))
+    
+    #4. 오름차순의 답 출력
+    return sorted(answer)
