@@ -1,0 +1,13 @@
+def solution(sizes):
+    #1. 배열을 돌면서 최댓값과 최솟값의 리스트를 구함.
+    # 가로가 세로 길이보다 길도록 조건문으로 변경해준다.
+    max_list = []
+    min_list = []
+    for i in sizes:
+        if i[0] < i[1]:
+            i[0], i[1] = i[1], i[0]
+        max_list.append(i[0])
+        min_list.append(i[1])
+    
+    #2. 각각의 리스트에서 최댓값을 구해서 넓이 반환함.
+    return max(max_list) * max(min_list)
