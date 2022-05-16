@@ -14,3 +14,11 @@ def solution(d, budget):
             else:
                 del d[-1]
     return len(d)
+
+
+## 다른 사람의 풀이
+# def solution(d, budget):
+#     d.sort()
+#     while budget < sum(d):
+#         d.pop()
+#     return len(d)
