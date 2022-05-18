@@ -1,0 +1,30 @@
+import math
+
+def solution(w, h):
+     return (w*h) - (w+h-math.gcd(w,h))
+
+
+
+# 시간초과 풀이
+# def solution(w,h):
+    
+#     # 예외 처리
+#     if w == 1 or h == 1:
+#         return 0
+    
+#     # 큰 값을 w로 보내기
+#     if w < h:
+#         w, h = h, w
+    
+#     # 한 부분의 1x1 사각형 개수
+#     cnt = 0
+    
+#     # 기울기
+#     gradient = h / w
+    
+#     # 반복문 돌면서 그래프 밑의 사각형 개수 구하기
+#     for i in range(max(w, h)):
+#         cnt += int(i * gradient)
+        
+#     # 정답 출력
+#     return cnt * 2
