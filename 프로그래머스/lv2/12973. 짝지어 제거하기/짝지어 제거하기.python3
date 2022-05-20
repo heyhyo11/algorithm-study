@@ -1,0 +1,61 @@
+def solution(s):
+    
+    # 예외 처리
+    if len(s) < 2:
+        return 0
+    
+    stack = []
+    
+    for i in s:
+        
+        # stack이 비어있다면 채워주고 다음 i로 넘어간다.
+        if stack == []:
+            stack.append(i)
+            continue
+        
+        # 만약 stack의 마지막 요소와 i가 같다면 pop으로 빼주기
+        if stack[-1] == i:
+            stack.pop()
+           
+        # 같지 않다면 stack에 더해준다.
+        else:
+            stack.append(i)
+    
+    # 최종 결과보고 return 하기
+    if len(stack) == 0:
+        return 1
+    return 0
+
+
+
+
+
+
+
+
+
+
+
+## 시간 초과!
+
+# def solution(s):
+    
+#     #0. 예외처리: 아래의 반복문은 s의 길이가 2 이상일 때만 성립함
+#     if len(s) < 2:
+#         return 0
+    
+#   #1. s_list의 길이가 0이 될 때까지 while문 동작.
+#     while len(s) > 1:
+#         for i in range(1, len(s)):
+#             #2-1. i번째와 i-1번째를 비교해서 같다면 공백으로 만든 뒤 새로운 s 생성
+#             if s[i-1] == s[i]:
+#                 s = s.replace(s[i], '', 2)
+#                 break
+#             #2-2. 같지 않다면 이어서 for문 진행 
+#             else:
+#                 continue 
+#         #3. for문 중간에 break 없이 끝까지 진행되었다면 연속된 문자열이 없는 것임 
+#         else:
+#             return 0
+#     #4. s 길이가 0이라면 성공적으로 수행된 것임
+#     return 1
