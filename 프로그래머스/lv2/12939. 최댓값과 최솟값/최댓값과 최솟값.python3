@@ -3,3 +3,10 @@ def solution(s):
     answer = [str(min(s)), str(max(s))]
     answer = ' '.join(answer)
     return answer
+
+
+
+## 다른 사람의 풀이
+def solution(s):
+    s = list(map(int,s.split()))
+    return str(min(s)) + " " + str(max(s))
