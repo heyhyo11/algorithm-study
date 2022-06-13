@@ -1,0 +1,49 @@
+from collections import deque
+
+def solution(people, limit):
+    cnt = 0
+    deq = deque(sorted(people)) # 오름차순 정렬
+    while deq: # 더 이상 pop 못할 때까지
+        if len(deq) == 1: # 홀수개였다면 1개 남았을 때 break
+            cnt += 1
+            break
+        if deq[0] + deq[-1] <= limit: # 최소 + 최대 < limit 라면 둘 다 pop
+            deq.pop()
+            deq.popleft()
+        else:
+            deq.pop() # [-1] 자체로 보트 1개
+        cnt += 1
+    return cnt
+
+
+# def solution(people, limit):
+#     people = sorted(people)
+#     i, j, cnt, save = 0, -1, 0, []
+    
+#     for person in people:
+#         if person > limit:
+#             save.append(person)
+#             cnt += 1
+#             j -= 1
+    
+#     while len(people) - len(save) > 1:
+#         try:
+#             if people[i] + people[j] > limit:
+#                 save.append(people[j])
+#                 cnt += 1
+#                 j -= 1
+                
+#             else:
+#                 save.append(people[i])
+#                 save.append(people[j])
+#                 cnt += 1
+#                 i += 1
+#                 j -= 1
+#         except:
+#             break
+    
+#     if len(people) % 2 == 1:
+#         cnt += 1
+        
+        
+#     return cnt
