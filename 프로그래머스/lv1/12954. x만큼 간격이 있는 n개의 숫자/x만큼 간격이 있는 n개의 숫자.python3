@@ -1,0 +1,9 @@
+def solution(x, n):
+    answer = []
+    if x > 0:
+        answer = list(range(x, x*n+1, x))
+    elif x == 0:
+        answer = [0 for i in range(n)]
+    else:
+        answer = list(range(x, x*n-1, x))
+    return answer
