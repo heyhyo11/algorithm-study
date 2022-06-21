@@ -11,6 +11,7 @@ for _ in range(t):
     for _ in range(k):
         x,y = map(int,input().split())
         graph[y][x] = 1
+        
     dx = [-1,1,0,0]
     dy = [0,0,-1,1]
  
@@ -23,6 +24,7 @@ for _ in range(t):
                 dfs(x+dx[i],y+dy[i])
             return True
         return False
+    
     cnt = 0
     for i in range(n):
         for j in range(m):
