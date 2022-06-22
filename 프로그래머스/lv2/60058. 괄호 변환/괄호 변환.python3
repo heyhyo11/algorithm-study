@@ -1,3 +1,84 @@
+# u,v 구하기
+def slice_list(p):
+    left = 0
+    right = 0
+    for i in range(len(p)):
+        if p[i] == '(':
+            left += 1
+        elif p[i] == ')':
+            right -= 1
+        if left + right == 0:
+            u = p[:i + 1]
+            if i + 1 < len(p):
+                v = p[i + 1:]
+            else:
+                v = ""
+            break
+    return u, v
+
+
+# 올바른 괄호 문자열 판별
+def balance_list(p):
+    ans = []
+    for elem in p:
+        if elem == '(':
+            ans.append(elem)
+        else:
+            # 만약 ans이 비어있다면
+            if not len(ans):
+                return False
+            # 짝이 맞는 경우라면 pop으로 제거함
+            elif ans[-1] == '(':
+                ans.pop()
+    if len(ans):
+        # 다 돌고 나서 ans에 남아있으면 올바른 괄호 아님
+        return False
+    else:
+        return True
+
+    # 올바른 괄호 문자열 만들기
+
+
+def make_balnace_list(p):
+    result = ""
+
+    # 1. 입력이 빈 문자열인 경우, 빈 문자열을 반환합니다. 
+    if len(p) == 0:
+        return ''
+
+    # 2. 문자열 w를 두 "균형잡힌 괄호 문자열" u, v로 분리합니다. 
+    # 단, u는 "균형잡힌 괄호 문자열"로 더 이상 분리할 수 없어야 하며,
+    # v는 빈 문자열이 될 수 있습니다.
+    u, v = slice_list(p)
+
+    # 3. 문자열 u가 "올바른 괄호 문자열" 이라면 
+    # 문자열 v에 대해 1단계부터 다시 수행합니다. 
+    if balance_list(u):
+        # 3-1. 수행한 결과 문자열을 u에 이어 붙인 후 반환합니다. 
+        result = u + make_balnace_list(v)
+
+    # 4. 문자열 u가 "올바른 괄호 문자열"이 아니라면 아래 과정을 수행합니다.
+    else:
+        # 4-1. 빈 문자열에 첫 번째 문자로 '('를 붙입니다. 
+        # 4-2. 문자열 v에 대해 1단계부터 재귀적으로 수행한 결과 문자열을 이어 붙입니다. 
+        # 4-3. ')'를 다시 붙입니다. 
+        tmp = '(' + make_balnace_list(v) + ')'
+        # 4-4. u의 첫 번째와 마지막 문자를 제거하고, 나머지 문자열의 괄호 방향을 뒤집어서 뒤에 붙입니다. 
+        u = u[1:-1]
+        for elem in u:
+            if elem == '(':
+                tmp += ')'
+            else:
+                tmp += '('
+        result += tmp
+    return result
+
+
 def solution(p):
-    answer = ''
-    return answer
+    ans = ''
+    # 만약 처음부터 올바른 괄호라면 그냥 return
+    if balance_list(p):
+        return p
+
+    ans = make_balnace_list(p)
+    return ans
