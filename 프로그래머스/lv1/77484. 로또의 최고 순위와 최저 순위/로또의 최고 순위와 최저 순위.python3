@@ -11,8 +11,8 @@ def solution(lottos, win_nums):
     
     if win_nums_cnt == 0:
         win_nums_result = 6
+
     if lottos_cnt == 0 and win_nums_cnt == 0:
         lottos_result = 6
         
-    
     return [lottos_result, win_nums_result]
