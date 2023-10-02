@@ -20,3 +20,23 @@ for _ in range(T):
     print('NO')
   elif sum == 0:
     print('YES')
+
+
+## 강의 참고
+# for _ in range(int(input())):
+#     stk = []
+#     is_vps = True
+#     for ch in input():
+#         if ch == '(':
+#             stk.append(ch)
+#         else:  # ')'
+#             if stk:
+#                 stk.pop()
+#             else:
+#                 is_vps = False
+#                 break
+
+#     if stk:
+#         is_vps = False
+
+#     print('YES' if is_vps else 'NO')
