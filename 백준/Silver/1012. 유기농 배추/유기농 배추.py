@@ -1,34 +1,43 @@
-# 참고사이트: https://jiwon-coding.tistory.com/95
-
 import sys
-sys.setrecursionlimit(10000)
+from collections import deque
+
+sys.setrecursionlimit(10**7) 
+input = sys.stdin.readline
+
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
  
-t= int(input())
+def bfs(graph, a, b):
+    queue = deque()
+    queue.append((a, b))
+    graph[a][b] = 0
+ 
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = 0
+                queue.append((nx, ny))
+
+
+t = int(input().rstrip()) # 테스트 케이스 개수
 for _ in range(t):
-    m,n,k = map(int,input().split())
-    graph = [[0]*m for _ in range(n)]
- 
-    for _ in range(k):
-        x,y = map(int,input().split())
+    m, n, k = map(int, input().rstrip().split()) # m: 가로, n: 세로, k: 위치 개수
+    graph = [[0]*m for _ in range(n)] # 주어진 배추밭
+
+    for i in range(k): # 배추밭 생성
+        x, y = map(int, input().rstrip().split())
         graph[y][x] = 1
-        
-    dx = [-1,1,0,0]
-    dy = [0,0,-1,1]
- 
-    def dfs(x,y):
-        if x<0 or x>=n or y<0 or y>=m:
-            return False
-        if graph[x][y]==1:
-            graph[x][y] = 0
-            for i in range(4):
-                dfs(x+dx[i],y+dy[i])
-            return True
-        return False
-    
-    cnt = 0
+
+    cnt = 0 # 연결요소 개수
     for i in range(n):
         for j in range(m):
-            if dfs(i,j)==True:
-                cnt +=1
- 
+            if graph[i][j] == 1:
+                bfs(graph, i, j)
+                cnt += 1 # bfs 끝날 때마다 +1
+
     print(cnt)
