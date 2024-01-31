@@ -1,23 +1,20 @@
-## 참고사이트: https://lucian-blog.tistory.com/57
+n = int(input())
 
-import sys
+def star(l):
+    if l == 3:
+        return ['***','* *','***']
 
+    arr = star(l//3)
+    stars = []
+    for i in arr:
+        stars.append(i*3)
 
-def draw_stars(n):
-  if n == 1:
-    return ['*']
-  
-  Stars = draw_stars(n//3)
-  L = []
-  
-  for star in Stars:
-    L.append(star*3)
-  for star in Stars:
-    L.append(star + ' '*(n//3) + star)
-  for star in Stars:
-    L.append(star*3)
-    
-  return L
+    for i in arr:
+        stars.append(i + (l//3)*' ' + i)
 
-N = int(sys.stdin.readline().rstrip())
-print('\n'.join(draw_stars(N)))
+    for i in arr:
+        stars.append(i*3)
+
+    return stars
+
+print('\n'.join(star(n)))
