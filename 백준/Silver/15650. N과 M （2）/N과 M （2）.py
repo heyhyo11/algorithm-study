@@ -2,7 +2,8 @@ from itertools import combinations
 import sys
 
 # 사용자 입력 받기
-N, M = map(int, sys.stdin.readline().rstrip().split())
+input = sys.stdin.readline
+N, M = map(int, input().rstrip().split())
 
 # 1 ~ N까지의 숫자를 리스트로 만들기
 N_list = [i for i in range(1, N+1)]
