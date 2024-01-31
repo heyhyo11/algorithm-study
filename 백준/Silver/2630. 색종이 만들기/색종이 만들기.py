@@ -1,35 +1,36 @@
-# 참고한 사이트: https://happylsm76.tistory.com/entry/%EB%B0%B1%EC%A4%80-2630%EB%B2%88%EC%83%89%EC%A2%85%EC%9D%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0-with-Python
-
 import sys
 
-N = int(sys.stdin.readline())
-paper = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+input = sys.stdin.readline
 
-result = []
+# n * n의 n 입력
+n = int(input().rstrip())
 
-def solution(x, y, N):
-  color = paper[x][y]
-  for i in range(x, x+N):
-    for j in range(y, y+N):
-      if color != paper[i][j]:
-        solution(x, y, N//2)
-        solution(x, y+N//2, N//2)
-        solution(x+N//2, y, N//2)
-        solution(x+N//2, y+N//2, N//2)
-        return
-  if color == 0:
-    result.append(0)
-  else:
-    result.append(1)
-    
-solution(0, 0, N)
-print(result.count(0))
-print(result.count(1))
+# paper: n * n 전체 입력
+paper = [list(map(int, input().rstrip().split())) for _ in range(n)]
 
+# 출력할 파란색, 하얀색 종이 개수
+cnt_blue = 0
+cnt_white = 0
 
-  
+def search(x, y, k): # x: x좌표, y: y좌표, k: n
+    global cnt_blue, cnt_white
+    visited=paper[x][y] # 시작 좌표를 방문
+    for i in range(x, x+k): # 모든 좌표를 이동하면서
+        for j in range(y, y+k):
+            if paper[i][j] != visited: # 시작 좌표와 일치하지 않으면
+                for a in range(2): # 9개의 사각형으로 분리한다.
+                    for b in range(2):
+                        search(x+a*k//2, y+b*k//2, k//2) # 예) x+a*9//3, y+b*9//3, 9//3
+                return
+            
 
-  
+    if visited==0:
+        cnt_white+=1
+    elif visited==1:
+        cnt_blue+=1
 
+# 함수 시작
+search(0,0,n)
 
-
+# 정답 출력
+print(cnt_white, cnt_blue, sep='\n')
