@@ -1,3 +1,5 @@
+# 풀이 참고: https://codesyun.tistory.com/185
+
 from itertools import combinations
 import sys
 
