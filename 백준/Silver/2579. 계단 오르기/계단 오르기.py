@@ -1,19 +1,20 @@
-## 참고사이트: https://www.youtube.com/watch?v=1ehx6uoFZkU
+# 풀이 참고
 
 import sys
 
+input = sys.stdin.readline
+
 def solve():
-    n = int(sys.stdin.readline().rstrip())
-    arr = [0] # 계단의 숫자
+    n = int(input().rstrip())
+    arr = [0]
     for _ in range(n):
-        x = int(sys.stdin.readline().rstrip())
+        x = int(input().rstrip())
         arr.append(x)
-    g = [0, 0] # i-1번째에서 i번째 계단으로 가는 경우
-    h = [0, arr[1]] # i-2번째에서 i번째 계단으로 가는 경우
+    g = [0, 0] 
+    h = [0, arr[1]] 
     for i in range(2, n+1):
         g.append(h[i-1] + arr[i])
         h.append(max(h[i-2], g[i-2]) + arr[i])
     print(max(g[n], h[n]))
     
 solve()
-    
