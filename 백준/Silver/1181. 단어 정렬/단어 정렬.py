@@ -1,13 +1,14 @@
 import sys
 
-N = int(sys.stdin.readline())
-N_list = []
+input = sys.stdin.readline
+n = int(input())
+ans = []
 
-for _ in range(N):
-  str = sys.stdin.readline().rstrip()
-  N_list.append(str)
+for _ in range(n):
+  str = input().rstrip()
+  ans.append(str)
   
-N_list = list(set(N_list))
-N_list.sort(key=lambda x:(len(x), x))
+ans = list(set(ans))
+ans.sort(key=lambda x:(len(x), x))
 
-print(*N_list, sep="\n")
+print(*ans, sep="\n")
