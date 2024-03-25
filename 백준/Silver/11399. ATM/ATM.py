@@ -1,11 +1,12 @@
 import sys
 
-N = int(sys.stdin.readline())
-num_list = sorted(map(int, sys.stdin.readline().split()))
-answer = 0
+input = sys.stdin.readline
+n = int(input())
+nums = sorted(map(int, input().split()))
+ans = 0
 
-for i in num_list:
-  answer += i * N
-  N -= 1
+for num in nums:
+  ans += num * n
+  n -= 1
   
-print(answer)
+print(ans)
