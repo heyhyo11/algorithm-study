@@ -1,20 +1,25 @@
-# 참고한 사이트: https://dalseoin.tistory.com/entry/
+import sys
+
+input = sys.stdin.readline
 
 n, m = map(int, input().split())
-L = list(map(int, input().split()))
+tree = list(map(int, input().split()))
+
 down = 0
-up = max(L)
-answer = -1
-while down <= up: 
+up = max(tree)
+ans = 0
+
+while down <= up:
     mid = (down + up) // 2
-    tree_total = sum((i - mid) if (i - mid) > 0 else 0 for i in L)
-    if tree_total == m:  # 잘린 나무의 합이 필요한 것과 일치하면 끝
-        answer = mid
+    cut = 0
+    cut = sum((i - mid) if (i - mid) > 0 else 0 for i in tree)
+    if cut == m:
+        ans = mid
         break
-    elif tree_total > m:  # 잘린 나무의 합이 필요한 것보다 많으면
-        answer = mid
+    elif cut > m:
+        ans = mid
         down = mid + 1
-    elif tree_total < m:  # 잘린 나무의 합이 필요한 것보다 적으면
-        up = mid - 1
-    
-print(answer)
+    else:
+        up = mid-1
+
+print(ans)
