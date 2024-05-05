@@ -1,16 +1,16 @@
-import sys
-import heapq
+import sys, heapq
 
-numbers = int(input())
-heap = []
+input = sys.stdin.readline
 
-#Min Heap
-for _ in range(numbers):
-    num = int(sys.stdin.readline())
-    if num != 0:
-        heapq.heappush(heap, num)
-    else:
+n = int(input())
+heap_items = []
+
+for _ in range(n):
+    item = int(input())
+    if item == 0:
         try:
-            print(heapq.heappop(heap))
+            print(heapq.heappop(heap_items))
         except:
             print(0)
+    else:
+        heapq.heappush(heap_items, item)
