@@ -1,31 +1,33 @@
-# 풀이 참고
 import sys
-input = sys.stdin.readline
 from collections import deque
+input = sys.stdin.readline
 
-n = int(input())
-m = int(input())
-graph = [ [0] * (n+1) for _ in range(n+1)]
-visited = [0 for _ in range(n+1)]
+n = int(input().strip())
+m = int(input().strip())
+A = [[] for _ in range(n+1)]
+ans = []
+visited = [-1] * (n+1)
 
-for i in range(m):
-    a,b = map(int,input().split())
-    graph[a].append(b)
-    graph[b].append(a)
+def bfs(v):
+    queue = deque()
+    queue.append(v) # 시작 노드
+    visited[v] += 1 # 현재 노드 방문 기록
+    while queue:
+        now_node = queue.popleft()
+        for i in A[now_node]: # 큐에서 노드 데이터 가져오기
+            if visited[i] == -1: # 미방문 노드
+                visited[i] = visited[now_node] + 1
+                queue.append(i)
 
-def bfs(x):
-    q = deque()
-    visited[x] = 1
-    q.append(x)
-    while q:
-        a = q.popleft()
-        for i in graph[a]:
-            if visited[i] == 0:
-                q.append(i)
-                visited[i] = visited[a] + 1
+for _ in range(m): # 그래프 데이터 저장
+    s, e = map(int, input().split())
+    A[s].append(e)
+    A[e].append(s)
+
 bfs(1)
-result = 0
-for i in range(2,n+1):
-    if visited[i] < 4 and visited[i] != 0:
-        result += 1
-print(result)
+
+for i in range(n+1): # 방문거리가 1 또는 2인 경우 정답 리스트에 추가
+    if visited[i] == 1 or visited[i] == 2:
+        ans.append(i)
+
+print(len(ans))
