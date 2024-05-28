@@ -1,14 +1,7 @@
 import sys
+input = sys.stdin.readline
 
-N = int(sys.stdin.readline().rstrip())
-num_list = list(map(int, sys.stdin.readline().split()))
-new_list = []
+n = int(input())
+score = list(map(int, input().split()))
 
-num_max = max(num_list)
-
-
-for num in num_list:
-  num = (num / num_max) * 100
-  new_list.append(num)
-
-print(sum(new_list)/N)
+print(sum(score) * 100 / n / max(score))
